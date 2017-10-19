@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Red Vecinal</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_detalle_alerta">Red Vecinal</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="violencia_genero">Violencia de genero</string>
+    <string name="directorio">Directorio</string>
+    <string name="agenda_vecinal">Agenda Vecinal</string>
+    <string name="denuncia">Denuncia ciudadana</string>
+    <string name="contactos">Contactos de cuadra</string>
+
+    <string name="title_activity_test">TestActivity</string>
+    <string name="inicio">Inicio</string>
+    <string name="emergencia">Emergencia</string>
+    <string name="informacion">Información</string>
+    <string name="informacion_legal">Informacón legal</string>
+    <string name="sitio">Sitio web</string>
+    <string name="twitter">Twitter</string>
+    <string name="facebook">Facebook</string>
+
+</resources>

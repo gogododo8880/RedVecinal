@@ -1,0 +1,517 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="net.ddns.utn.redvecinal.TestActivity">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/background_white"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/btn_enviar"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TabHost
+            android:id="@+id/th_cuestionario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TabWidget
+                    android:id="@android:id/tabs"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/background_light" />
+
+                <FrameLayout
+                    android:id="@android:id/tabcontent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/gradiente_blanco">
+
+                    <LinearLayout
+                        android:id="@+id/tab1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textView14"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="1dp"
+                            android:background="@color/colorAccent"
+                            android:text="Test"
+                            android:textAlignment="center"
+                            android:textColor="@android:color/background_light"
+                            android:textSize="24sp" />
+
+                        <ScrollView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="5dp"
+                                    android:text="Únete para poner fin a la violencia de género.  ¿Sabías que en México 6 de cada 10 mujeres de 15 años en adelante han padecido alguna forma de violencia? En el mundo una de cada tres mujeres sufre de violencia física o sexual, principalmente de su pareja. \n ¿Te gustaría conocer si vives alguna situación de violencia con tu pareja? Contesta por favor el siguiente cuestionario, te tomará menos de un minuto. Es muy importante que sepas si vives alguna situación de violencia ya que puede tener consecuencias de salud para ti y tu familia. \n Conteste las siguientes preguntas."
+                                    android:textSize="18sp" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="1.-En general, ¿cómo describiría usted su relación con su pareja?"
+                                    android:textSize="18sp" />
+
+                                <RadioGroup
+                                    android:id="@+id/rg_p1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <RadioButton
+                                        android:id="@+id/rb_p1_mucha"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:text="Mucha tensión" />
+
+                                    <RadioButton
+                                        android:id="@+id/rb_p1_alguna"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:text="Alguna tensión" />
+
+                                    <RadioButton
+                                        android:id="@+id/rb_p1_sin"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:text="Sin tensión" />
+                                </RadioGroup>
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="2.-Usted y su pareja resuelven sus discusiones con:"
+                                    android:textSize="18sp" />
+
+                                <RadioGroup
+                                    android:id="@+id/rg_p2"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <RadioButton
+                                        android:id="@+id/rb_p2_mucha"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:text="Mucha dificultad" />
+
+                                    <RadioButton
+                                        android:id="@+id/rb_p2_alguna"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:text="Alguna dificultad" />
+
+                                    <RadioButton
+                                        android:id="@+id/rb_p2_sin"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:text="Sin dificultad" />
+                                </RadioGroup>
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="3.-Al terminar las discusiones ¿se siente decaída o mal con usted misma?"
+                                    android:textSize="18sp" />
+
+                                <RadioGroup
+                                    android:id="@+id/rg_p3"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <RadioButton
+                                        android:id="@+id/rb_p3_mucha"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:text="Muchas veces" />
+
+                                    <RadioButton
+                                        android:id="@+id/rb_p3_alguna"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:text="A veces" />
+
+                                    <RadioButton
+                                        android:id="@+id/rb_p3_ninguna"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:text="Ninguna" />
+                                </RadioGroup>
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="4.-Las discusiones terminan en golpes, patadas, o empujones"
+                                    android:textSize="18sp" />
+
+                                <RadioGroup
+                                    android:id="@+id/rg_p4"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <RadioButton
+                                        android:id="@+id/rb_p4_mucha"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:text="Muchas veces" />
+
+                                    <RadioButton
+                                        android:id="@+id/rb_p4_alguna"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:text="A veces" />
+
+                                    <RadioButton
+                                        android:id="@+id/rb_p4_ninguna"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:text="Nunca" />
+                                </RadioGroup>
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="5-Siente miedo de lo que su pareja diga o haga"
+                                    android:textSize="18sp" />
+
+                                <RadioGroup
+                                    android:id="@+id/rg_p5"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <RadioButton
+                                        android:id="@+id/rb_p5_mucha"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:text="Muchas veces" />
+
+                                    <RadioButton
+                                        android:id="@+id/rb_p5_alguna"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:text="A veces" />
+
+                                    <RadioButton
+                                        android:id="@+id/rb_p5_ninguna"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:text="Nunca" />
+                                </RadioGroup>
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="6.-Su pareja ha abusado de usted físicamente"
+                                    android:textSize="18sp" />
+
+                                <RadioGroup
+                                    android:id="@+id/rg_p6"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <RadioButton
+                                        android:id="@+id/rb_p6_mucha"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:text="Muchas veces" />
+
+                                    <RadioButton
+                                        android:id="@+id/rb_p6_alguna"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:text="A veces" />
+
+                                    <RadioButton
+                                        android:id="@+id/rb_p6_ninguna"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:text="Nunca" />
+                                </RadioGroup>
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="7.-Su pareja ha abusado de usted emocionalmente"
+                                    android:textSize="18sp" />
+
+                                <RadioGroup
+                                    android:id="@+id/rg_p7"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <RadioButton
+                                        android:id="@+id/rb_p7_mucha"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:text="Muchas veces" />
+
+                                    <RadioButton
+                                        android:id="@+id/rb_p7_alguna"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:text="A veces" />
+
+                                    <RadioButton
+                                        android:id="@+id/rb_p7_ninguna"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:text="Nunca" />
+                                </RadioGroup>
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="8.-Su pareja ha abusado de usted sexualmente"
+                                    android:textSize="18sp" />
+
+                                <RadioGroup
+                                    android:id="@+id/rg_p8"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <RadioButton
+                                        android:id="@+id/rb_p8_mucha"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:text="Muchas veces" />
+
+                                    <RadioButton
+                                        android:id="@+id/rb_p8_alguna"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:text="A veces" />
+
+                                    <RadioButton
+                                        android:id="@+id/rb_p8_ninguna"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:text="Nunca" />
+                                </RadioGroup>
+                            </LinearLayout>
+                        </ScrollView>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/tab2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="1dp"
+                            android:background="@color/colorAccent"
+                            android:text="Datos personales"
+                            android:textAlignment="center"
+                            android:textColor="@android:color/background_light"
+                            android:textSize="24sp" />
+
+                        <ScrollView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <android.support.design.widget.TextInputLayout
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="wrap_content">
+
+                                    <EditText
+                                        android:id="@+id/et_nombre"
+                                        android:layout_width="fill_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginEnd="15dp"
+                                        android:layout_marginStart="15dp"
+                                        android:ems="10"
+                                        android:gravity="center"
+                                        android:hint="ingresa tu nombre..."
+                                        android:inputType="textCapWords|textPersonName"
+                                        android:maxLength="45" />
+                                </android.support.design.widget.TextInputLayout>
+
+                                <android.support.design.widget.TextInputLayout
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="wrap_content">
+
+                                    <EditText
+                                        android:id="@+id/et_ap_pat"
+                                        android:layout_width="fill_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginEnd="15dp"
+                                        android:layout_marginStart="15dp"
+                                        android:ems="10"
+                                        android:gravity="center"
+                                        android:hint="ingresa tu apellido paterno..."
+                                        android:inputType="textCapWords|textPersonName"
+                                        android:maxLength="45" />
+                                </android.support.design.widget.TextInputLayout>
+
+                                <android.support.design.widget.TextInputLayout
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="wrap_content">
+
+                                    <EditText
+                                        android:id="@+id/et_ap_mat"
+                                        android:layout_width="fill_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginEnd="15dp"
+                                        android:layout_marginStart="15dp"
+                                        android:ems="10"
+                                        android:gravity="center"
+                                        android:hint="ingresa tu apellido materno..."
+                                        android:inputType="textCapWords|textPersonName"
+                                        android:maxLength="45" />
+                                </android.support.design.widget.TextInputLayout>
+
+                                <android.support.design.widget.TextInputLayout
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="wrap_content">
+
+                                    <EditText
+                                        android:id="@+id/et_curp"
+                                        android:layout_width="fill_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginEnd="15dp"
+                                        android:layout_marginStart="15dp"
+                                        android:ems="10"
+                                        android:gravity="center"
+                                        android:hint="ingresa tu CURP..."
+                                        android:inputType="textCapCharacters"
+                                        android:maxLength="18" />
+                                </android.support.design.widget.TextInputLayout>
+
+
+                                <android.support.design.widget.TextInputLayout
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="wrap_content">
+
+                                    <EditText
+                                        android:id="@+id/et_edad"
+                                        android:layout_width="fill_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginEnd="15dp"
+                                        android:layout_marginStart="15dp"
+                                        android:ems="10"
+                                        android:gravity="center"
+                                        android:hint="Ingresa tu edad..."
+                                        android:inputType="number"
+                                        android:maxLength="3" />
+                                </android.support.design.widget.TextInputLayout>
+
+                                <android.support.design.widget.TextInputLayout
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="wrap_content">
+
+                                    <EditText
+                                        android:id="@+id/et_telefono"
+                                        android:layout_width="fill_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginEnd="15dp"
+                                        android:layout_marginStart="15dp"
+                                        android:ems="10"
+                                        android:gravity="center"
+                                        android:hint="Ingresa tu telefono..."
+                                        android:inputType="phone"
+                                        android:maxLength="10" />
+                                </android.support.design.widget.TextInputLayout>
+
+                                <android.support.design.widget.TextInputLayout
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="wrap_content">
+
+                                    <EditText
+                                        android:id="@+id/et_direccion"
+                                        android:layout_width="fill_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginEnd="15dp"
+                                        android:layout_marginStart="15dp"
+                                        android:ems="10"
+                                        android:gravity="center"
+                                        android:hint="ingresa tu dirección..."
+                                        android:inputType="textCapWords|textMultiLine|textPersonName"
+                                        android:maxLength="200" />
+                                </android.support.design.widget.TextInputLayout>
+
+                            </LinearLayout>
+                        </ScrollView>
+
+                    </LinearLayout>
+
+                </FrameLayout>
+            </LinearLayout>
+        </TabHost>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_enviar"
+        style="@android:style/Widget.Button.Small"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="net.ddns.utn.redvecinal">
+
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_red2"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_red2_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:configChanges="screenSize|orientation"
+            android:label="@string/title_activity_main"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".TestActivity"
+            android:configChanges="screenSize|orientation" />
+        <activity android:name=".DirectorioActivity" />
+        <activity android:name=".listas.DetalleDirectorioActivity" />
+        <activity
+            android:name=".LoginActivity"
+            android:configChanges="screenSize|orientation"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity android:name=".DetalleAgendaActivity" />
+
+        <service
+            android:name=".UpdateService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <receiver
+            android:name=".Receiver"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity android:name=".AlertaActivity" />
+        <activity
+            android:name=".DetalleAlertaActivity"
+            android:label="@string/title_activity_detalle_alerta"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".InfoViolenciaActivity"></activity>
+    </application>
+
+</manifest>

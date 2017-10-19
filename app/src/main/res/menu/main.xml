@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_emergencia"
+        android:icon="@drawable/ic_emergencia"
+        android:orderInCategory="100"
+        android:title="@string/emergencia" />
+    <item
+        android:id="@+id/action_informacion"
+        android:icon="@drawable/ic_infomacion"
+        android:orderInCategory="100"
+        android:title="@string/informacion" />
+    <item
+        android:id="@+id/action_legal"
+        android:icon="@drawable/ic_informacion_legal"
+        android:orderInCategory="100"
+        android:title="@string/informacion_legal" />
+    <item
+        android:id="@+id/action_salir"
+        android:icon="@drawable/ic_salir"
+        android:orderInCategory="100"
+        android:title="salir" />
+</menu>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_violencia"
+            android:icon="@drawable/ic_woman"
+            android:title="@string/violencia_genero" />
+        <item
+            android:id="@+id/nav_directorio"
+            android:icon="@drawable/ic_contacts"
+            android:title="@string/directorio" />
+        <item
+            android:id="@+id/nav_agenda"
+            android:icon="@drawable/ic_date"
+            android:title="@string/agenda_vecinal" />
+        <item
+            android:id="@+id/nav_denuncia"
+            android:icon="@drawable/ic_denuncia"
+            android:title="@string/denuncia" />
+        <item
+            android:id="@+id/nav_contactos"
+            android:icon="@drawable/ic_contactos"
+            android:title="@string/contactos" />
+    </group>
+
+    <item android:title="Comunicate">
+        <menu>
+            <item
+                android:id="@+id/nav_sitio"
+                android:icon="@drawable/ic_site"
+                android:title="@string/sitio"/>
+            <item
+                android:id="@+id/nav_twitter"
+                android:icon="@drawable/ic_twitter"
+                android:title="@string/twitter" />
+            <item
+                android:id="@+id/nav_facebook"
+                android:icon="@drawable/ic_facebook"
+                android:title="@string/facebook" />
+        </menu>
+    </item>
+
+</menu>
