@@ -17,14 +17,19 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
-import android.support.design.widget.Snackbar;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.view.menu.MenuBuilder;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.text.InputFilter;
 import android.text.InputType;
 import android.text.format.DateFormat;
@@ -32,16 +37,10 @@ import android.util.Log;
 import android.view.GestureDetector;
 import android.view.Gravity;
 import android.view.KeyEvent;
-import android.view.MotionEvent;
-import android.view.View;
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.Animation;
@@ -122,7 +121,14 @@ public class MainActivity extends AppCompatActivity
     ArrayList<Directorio> items;
 
     TextView tv_fecha_agenda;
-    TextView tv_hora_agenda;
+    TextView tv_hora_inicio;
+    TextView tv_hora_fin;
+
+    String fecha_agenda;
+    String hora_inicio;
+    String hora_fin;
+    String descripcion;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -508,7 +514,8 @@ public class MainActivity extends AppCompatActivity
         tema_azul(R.string.agenda_vecinal);
 
         Button btn_fecha_agenda = (Button) findViewById(R.id.btn_fecha_agenda);
-        Button btn_hora_agenda = (Button) findViewById(R.id.btn_hora_agenda);
+        Button btn_hora_inicio = (Button) findViewById(R.id.btn_hora_inicio);
+        Button btn_hora_fin = (Button) findViewById(R.id.btn_hora_fin);
         Button btn_ver_agenda = (Button) findViewById(R.id.btn_ver_agenda);
         Button btn_guardar = (Button) findViewById(R.id.btn_guardar);
 
@@ -517,10 +524,15 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View view) {popupMuestraCalendario();
             }
         });
-        btn_hora_agenda.setOnClickListener(new View.OnClickListener() {
+        btn_hora_inicio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {popupMuestraReloj("inicio");
+            }
+        });
+        btn_hora_fin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                popupMuestraReloj();
+                popupMuestraReloj("fin");
             }
         });
         btn_ver_agenda.setOnClickListener(new View.OnClickListener() {
@@ -557,8 +569,11 @@ public class MainActivity extends AppCompatActivity
                 String pin =  Constantes.getCifrado(input.getText().toString(),"SHA1");
                 if(PIN.equals(pin)){
                     if(funcion == "guardar"){
+                        EditText et_descripcion =(EditText) findViewById(R.id.et_descripcion);
+                        descripcion = et_descripcion.getText().toString().trim().toUpperCase();
                         new GuardarAgenda().execute();
                     }else{
+
                         Intent intent = new Intent(MainActivity.this,DetalleAgendaActivity.class);
                         startActivity(intent);
                         overridePendingTransition(R.anim.left_in, R.anim.left_out);
@@ -570,7 +585,7 @@ public class MainActivity extends AppCompatActivity
         }).show();
     }
 
-    private void popupMuestraReloj(){
+    private void popupMuestraReloj(final String funcion){
         final Calendar calendar = Calendar.getInstance();
         TimePickerDialog.OnTimeSetListener time = new TimePickerDialog.OnTimeSetListener() {
             @Override
@@ -581,9 +596,15 @@ public class MainActivity extends AppCompatActivity
                 String myFormat = "HH:mm";
                 SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.getDefault());
 
-                tv_hora_agenda = (TextView) findViewById(R.id.tv_hora_agenda);
-                tv_hora_agenda.setText(sdf.format(calendar.getTime()));
-
+                if(funcion.equals("inicio")){
+                    tv_hora_inicio = (TextView) findViewById(R.id.tv_hora_inicio);
+                    tv_hora_inicio.setText("Hora inicio: "+sdf.format(calendar.getTime()));
+                    hora_inicio = sdf.format(calendar.getTime());
+                }else {
+                    tv_hora_fin = (TextView) findViewById(R.id.tv_hora_fin);
+                    tv_hora_fin.setText("Hora fin: "+sdf.format(calendar.getTime()));
+                    hora_fin = sdf.format(calendar.getTime());
+                }
             }
         };
 
@@ -604,11 +625,14 @@ public class MainActivity extends AppCompatActivity
                 calendar.set(Calendar.MONTH, monthOfYear);
                 calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
                 String myFormat = "dd MMMM yyyy"; // your format
+                String formato = "yyyy-MM-dd";
                 SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.getDefault());
+                SimpleDateFormat formatoInsert = new SimpleDateFormat(formato, Locale.getDefault());
 
                 tv_fecha_agenda =(TextView) findViewById(R.id.tv_fecha_agenda);
                 tv_fecha_agenda.setText(sdf.format(calendar.getTime()));
-                //your_view.setText(sdf.format(myCalendar.getTime()));
+                fecha_agenda = formatoInsert.format(calendar.getTime());
+
             }
 
         };
@@ -658,8 +682,6 @@ public class MainActivity extends AppCompatActivity
             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(urlPage)));
         }
     }
-
-
 
     //metodos de configuracion y de uso de librerias
 
@@ -950,6 +972,35 @@ public class MainActivity extends AppCompatActivity
 
         @Override
         protected String doInBackground(String... strings) {
+            if(Constantes.compuebaConexion(MainActivity.this)){
+                HttpClient httpClient = new DefaultHttpClient();
+                HttpPost httpPost = new HttpPost(Constantes.URL_AGENDA);
+
+                MultipartEntityBuilder entityBuilder = MultipartEntityBuilder.create();
+                entityBuilder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);
+
+                entityBuilder.addTextBody("metodo","insertaAgenda");
+                entityBuilder.addTextBody("token",TOKEN);
+                entityBuilder.addTextBody("descripcion",Constantes.quitarCaracteres(descripcion));
+                entityBuilder.addTextBody("fecha_reunion",fecha_agenda);
+                entityBuilder.addTextBody("hora_fin",hora_fin);
+                entityBuilder.addTextBody("hora_inicio",hora_inicio);
+                HttpEntity entity = entityBuilder.build();
+                httpPost.setEntity(entity);
+
+                HttpResponse response = null;
+
+                try {
+                    response = httpClient.execute(httpPost);
+                    HttpEntity httpEntity = response.getEntity();
+                    String result = EntityUtils.toString(httpEntity);
+                    jsonObj = new JSONObject(result);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
             return null;
         }
 
@@ -960,9 +1011,19 @@ public class MainActivity extends AppCompatActivity
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    Intent intent = new Intent(MainActivity.this,DetalleAgendaActivity.class);
-                    startActivity(intent);
-                    overridePendingTransition(R.anim.left_in, R.anim.left_out);
+                    try {
+                        Boolean error = jsonObj.getBoolean("error");
+                        if(error == false ){
+                            Intent intent = new Intent(MainActivity.this,DetalleAgendaActivity.class);
+                            startActivity(intent);
+                            overridePendingTransition(R.anim.left_in, R.anim.left_out);
+                            Toast.makeText(MainActivity.this,jsonObj.getString("mensaje"),Toast.LENGTH_LONG).show();
+                        }else{
+                            Toast.makeText(MainActivity.this,jsonObj.getString("mensaje"),Toast.LENGTH_LONG).show();
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
                 }
             });
         }
