@@ -11,18 +11,18 @@ import android.net.NetworkInfo;
 public class Constantes {
     public static final String PREFS_NOM = "login";
 
-    public static final String URL_LOGIN = "http://192.168.1.80/av_app/usuarios.php";
-    public static final String URL_PRIMARY= "http://192.168.1.80/av_app/";
-    public static final String URL_CONTACTOS= "http://192.168.1.80/av_app/contactos.php";
-    public static final String URL_TEST = "http://192.168.1.80/av_app/test.php";
-    public static final String URL_AGENDA = "http://192.168.1.80/av_app/agenda.php";
+    //public static final String URL_LOGIN = "http://192.168.1.80/av_app/usuarios.php";
+    //public static final String URL_PRIMARY= "http://192.168.1.80/av_app/";
+    //public static final String URL_CONTACTOS= "http://192.168.1.80/av_app/contactos.php";
+    //public static final String URL_TEST = "http://192.168.1.80/av_app/test.php";
+    //public static final String URL_AGENDA = "http://192.168.1.80/av_app/agenda.php";
 
 
-    //public static final String URL_LOGIN = "http://172.16.28.4:8080/DGSC/appRV/usuarios.php";
-    //public static final String URL_PRIMARY= "http://172.16.28.4:8080/DGSC/appRV/";
-    //public static final String URL_CONTACTOS= "http://172.16.28.4:8080/DGSC/appRV/contactos.php";
-    //public static final String URL_TEST = "http://172.16.28.4:8080/DGSC/appRV/test.php";
-    //public static final String URL_AGENDA = "http://172.16.28.4:8080/DGSC/appRV/agenda.php";
+    public static final String URL_LOGIN = "http://172.16.28.4:8080/DGSC/appRV/usuarios.php";
+    public static final String URL_PRIMARY= "http://172.16.28.4:8080/DGSC/appRV/";
+    public static final String URL_CONTACTOS= "http://172.16.28.4:8080/DGSC/appRV/contactos.php";
+    public static final String URL_TEST = "http://172.16.28.4:8080/DGSC/appRV/test.php";
+    public static final String URL_AGENDA = "http://172.16.28.4:8080/DGSC/appRV/agenda.php";
 
     public static boolean compuebaConexion(Context context){
         boolean connected = false;
