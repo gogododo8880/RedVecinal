@@ -93,7 +93,7 @@
                     android:layout_margin="15dp"
                     android:drawableRight="@drawable/ic_edit"
                     android:hint="Ingresa el asunto..."
-                    android:inputType="textCapWords|textMultiLine"
+                    android:inputType="textCapSentences|textMultiLine"
                     android:maxLength="5000" />
             </android.support.design.widget.TextInputLayout>
 

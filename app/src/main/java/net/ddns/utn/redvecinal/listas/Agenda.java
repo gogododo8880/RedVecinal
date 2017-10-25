@@ -6,13 +6,14 @@ package net.ddns.utn.redvecinal.listas;
 
 public class Agenda {
     String asunto,hora_inicio,hora_fin,fecha_reunion;
-    int status;
+    int idAgenda,status;
 
-    public Agenda(String asunto, String hora_inicio, String hora_fin, String fecha_reunion, int status) {
+    public Agenda(int idAgenda, String asunto, String hora_inicio, String hora_fin, String fecha_reunion, int status) {
         this.asunto = asunto;
         this.hora_inicio = hora_inicio;
         this.hora_fin = hora_fin;
         this.fecha_reunion = fecha_reunion;
+        this.idAgenda = idAgenda;
         this.status = status;
     }
 
@@ -46,6 +47,14 @@ public class Agenda {
 
     public void setFecha_reunion(String fecha_reunion) {
         this.fecha_reunion = fecha_reunion;
+    }
+
+    public int getIdAgenda() {
+        return idAgenda;
+    }
+
+    public void setIdAgenda(int idAgenda) {
+        this.idAgenda = idAgenda;
     }
 
     public int getStatus() {

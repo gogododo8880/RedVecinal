@@ -547,6 +547,11 @@ public class MainActivity extends AppCompatActivity
                 verDetalleAgenda("guardar");
             }
         });
+
+        fecha_agenda = "";
+        hora_inicio = "";
+        hora_fin = "";
+        descripcion = "";
     }
 
     private void verDetalleAgenda(final String funcion){
@@ -571,7 +576,12 @@ public class MainActivity extends AppCompatActivity
                     if(funcion == "guardar"){
                         EditText et_descripcion =(EditText) findViewById(R.id.et_descripcion);
                         descripcion = et_descripcion.getText().toString().trim().toUpperCase();
-                        new GuardarAgenda().execute();
+                        if(descripcion.equals("") || fecha_agenda.equals("") || hora_fin.equals("") || hora_inicio.equals("")){
+                            Toast.makeText(MainActivity.this,"¡Faltan datos por llenar!",Toast.LENGTH_LONG).show();
+                        }else{
+                            new GuardarAgenda().execute();
+                        }
+
                     }else{
 
                         Intent intent = new Intent(MainActivity.this,DetalleAgendaActivity.class);
@@ -1016,8 +1026,10 @@ public class MainActivity extends AppCompatActivity
                         if(error == false ){
                             Intent intent = new Intent(MainActivity.this,DetalleAgendaActivity.class);
                             startActivity(intent);
-                            overridePendingTransition(R.anim.left_in, R.anim.left_out);
-                            Toast.makeText(MainActivity.this,jsonObj.getString("mensaje"),Toast.LENGTH_LONG).show();
+                            panel.removeAllViews();
+                            child = getLayoutInflater().inflate(R.layout.child_agenda, null);
+                            panel.addView(child);
+                            iniciaAgenda();
                         }else{
                             Toast.makeText(MainActivity.this,jsonObj.getString("mensaje"),Toast.LENGTH_LONG).show();
                         }
