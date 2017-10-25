@@ -46,6 +46,7 @@ public class DetalleAgendaActivity extends AppCompatActivity {
     private String TOKEN;
     private JSONObject jsonObj;
     private JSONArray agenda;
+    private int id_agenda;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,15 +69,17 @@ public class DetalleAgendaActivity extends AppCompatActivity {
             new ConsultaAgenda().execute();
             rv_agenda.addOnItemTouchListener(new RecyclerTouchListener(this, rv_agenda, new ClickListener() {
                 @Override
-                public void onClick(View view, int position) {
+                public void onClick(View view, final int position) {
                     if(items.get(position).getStatus() == 0){
                         new AlertDialog.Builder(DetalleAgendaActivity.this)
+                                .setIcon(R.drawable.ic_alerta)
                                 .setTitle("¡Alerta!")
                                 .setMessage("¿Desea ver la lista de acuerdos o marcar la reunión como terminada?")
                                 .setPositiveButton("Terminar reunion", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int i) {
-
+                                        id_agenda = items.get(position).getIdAgenda();
+                                        new ModificaAgenda().execute();
                                     }
                                 })
                                 .setNegativeButton("Ver lista de acuerdos", new DialogInterface.OnClickListener() {
@@ -224,6 +227,61 @@ public class DetalleAgendaActivity extends AppCompatActivity {
         }
 
 
+    }
+    private class ModificaAgenda extends AsyncTask<String, String, String >{
+        ProgressDialog dialog;
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            dialog = new ProgressDialog(DetalleAgendaActivity.this);
+            dialog.setCancelable(false);
+            dialog.setIcon(R.drawable.ic_alerta);
+            dialog.setTitle("Espere...");
+            dialog.show();
+        }
+
+        @Override
+        protected String doInBackground(String... strings) {
+            if(Constantes.compuebaConexion(DetalleAgendaActivity.this)){
+                HttpClient httpClient = new DefaultHttpClient();
+                HttpPost httpPost = new HttpPost(Constantes.URL_AGENDA);
+
+                MultipartEntityBuilder entityBuilder = MultipartEntityBuilder.create();
+                entityBuilder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);
+
+                entityBuilder.addTextBody("metodo","actualizaAgenda");
+                entityBuilder.addTextBody("id_agenda",id_agenda+"");
+                HttpEntity entity = entityBuilder.build();
+                httpPost.setEntity(entity);
+
+                HttpResponse response = null;
+
+                try {
+                    response = httpClient.execute(httpPost);
+                    HttpEntity httpEntity = response.getEntity();
+                    String result = EntityUtils.toString(httpEntity);
+                    jsonObj = new JSONObject(result);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            dialog.dismiss();
+
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    iniciaAgenda();
+                }
+            });
+        }
     }
 
 }
